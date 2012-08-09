@@ -24,8 +24,8 @@
 // Some default packages are provided for you.  If you want to define your own, feel free to do so before including this
 // script.  These, or your own packages can be specified to the loader in query params (read below for details).
 if (!window.mercuryPackages) window.mercuryPackages = {
-  development: {javascripts: 'javascript/lib/jquery-1.7.js,javascript/lib/mercury.js', stylesheets: 'css/mercury.bundle.css'},
-  bundled: {javascripts: 'javascripts/jquery-1.7.js,javascripts/mercury.min.js,javascripts/mercury_dialogs.js', stylesheets: 'stylesheets/mercury.bundle.css'}
+  development: {javascripts: 'javascript/lib/jquery-1.7.js,javascript/lib/mercury.js,javascript/lib/mercury_dialogs.js', stylesheets: 'css/mercury.bundle.css'},
+  bundled: {javascripts: 'javascripts/lib/jquery-1.7.js,javascripts/lib/mercury.min.js,javascripts/lib/mercury_dialogs.js', stylesheets: 'stylesheets/mercury.bundle.css'}
 };
 
 
