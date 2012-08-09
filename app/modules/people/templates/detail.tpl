@@ -21,7 +21,7 @@
       {$item = reset($headerSections['HEADER_TITLE'])}
       {block name="headerTitle"}
         {if $item['url']}<a href="{$item['url']}" class="{$item['class']}">{/if}
-          <h2>{$item['title']}</h2>
+          <h2 id="title" name="title" data-mercury="simple">{$item['title']}</h2>
         {if $item['url']}</a>{/if}
       {/block}
       {if isset($headerSections['HEADER_SUBTITLE'])}
@@ -52,7 +52,7 @@
     {/if}
     {capture name="title" assign="title"}
       {block name="itemTitle"}
-        <div class="value">{$item['title']}</div>
+        <div class="value" id="{$item['label']}" data-mercury="simple">{$item['title']}</div>
       {/block}
     {/capture}
     {$section[$key]['title'] = $title}
@@ -61,6 +61,6 @@
 {/foreach}
 
 {/if}
-
+<a id="edit_page" data-save-url="{$saveUrl}" href="#" onclick="javascript:toggleMercury($(this));return false;">Edit Page</a>
 {include file="findInclude:common/templates/footer.tpl"}
 

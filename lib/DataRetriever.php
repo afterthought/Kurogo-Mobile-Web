@@ -25,7 +25,7 @@ abstract class DataRetriever {
     protected $DEFAULT_RESPONSE_CLASS = 'DataResponse';
     protected $DEFAULT_PARSER_CLASS;
     protected $PARSER_INTERFACE = 'DataParser';
-    protected $DEFAULT_CACHE_LIFETIME = 900; // 15 min
+    protected $DEFAULT_CACHE_LIFETIME = 0; // 15 min
     protected $initArgs=array();
     protected $authority;
     protected $debugMode = false;
