@@ -28,11 +28,23 @@ if (!window.mercuryPackages) window.mercuryPackages = {
   bundled: {javascripts: 'javascripts/jquery-1.7.js,javascripts/mercury.min.js,javascripts/mercury_dialogs.js', stylesheets: 'stylesheets/mercury.bundle.css'}
 };
 
+
 jQuery(window).on('mercury:ready', function() {
-  Mercury.saveUrl = 'http://localhost:3000/people/12345sd';
-  Mercury.saveMethod = 'PUT';
+
+ // Mercury.saveUrl='http://localhost:3000/people';
+ // alert(Mercury.saveURL); 
 });
 
+function toggleMercury(link) {
+  if (typeof(Mercury) == 'undefined') {
+    alert("Sorry, but Mercury Editor isn't supported by your current browser.\n\nBrowsers that support the required HTML5 spec:\n\n  Chrome 10+\n  Firefox 4+\n  Safari 5+\n  Opera 11.64+\n  Mobile Safari (iOS 5+)");
+  } else {
+    
+    Mercury.trigger('toggle:interface');
+    Mercury.saveUrl = link.attr('data-save-url');
+    // alert(Mercury.saveURL);
+  }
+}
 
 // ## Mercury Loader
 (function() {
@@ -66,9 +78,15 @@ jQuery(window).on('mercury:ready', function() {
     src: '/min/?g=file-/common/',
     // A value defined in the packages above.  Development is used by default.  If you want to provide your own package
     // you can just define one before including this script.
-    pack: 'development'
+    pack: 'development',
+    saveStyle: 'form',
+    saveMethod: null,
+    visible:false
   };
 
+  
+
+  
   // Hide the document during loading so there isn't a flicker while mercury is being loaded.
   var head = document.getElementsByTagName("head")[0];
   if (window == top) {
