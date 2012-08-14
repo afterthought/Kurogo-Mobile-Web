@@ -75,15 +75,17 @@ class DoctorsWebModule extends WebModule
             $this->addInternalJavascript('/common/javascript/lib/mercury.js');
             $this->addInternalJavascript('/common/javascript/lib/mercury_dialogs.js');
             $this->addInternalJavascript('/common/javascript/lib/mercury_loader.js');
-                  $id = $this->getArg('id');
+            
+            $id = $this->getArg('id');
                   
                   if ($item = $controller->getItem($id)) {
+                    
                       $this->assign('first_name', $item['first_name']);
                       $this->assign('last_name', $item['last_name']);
                       $this->assign('bio', $item['bio']);
+                    
+                      $this->assign('address', $item['address']);
                       $this->assign('head_shot', $item['head_shot']);
-                   
-                      
                       $saveUrl = $this->getModuleVar('BASE_URL', $defaultFeed, 'feeds');
                       $saveUrl = $saveUrl .'/'.$this->getArg('id').'.json';
                       $this->assign('saveUrl', $saveUrl);
