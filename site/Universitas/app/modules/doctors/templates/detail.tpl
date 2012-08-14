@@ -5,9 +5,9 @@
 <img src="{$head_shot['src']}" id="head_shot" data-mercury="image"/>
 <p class="smallprint" id="last_name" data-mercury="{$last_name['type']}">{$last_name['value']}</p>
 
-<p class="smallprint" id="address[city]" data-mercury="{$address['city']['type']}">{$address['city']['value']}</p>
-<p class="smallprint" id="address[state]" data-mercury="{$address['state']['type']}">{$address['state']['value']}</p>
-<p class="smallprint" id="address[zip_code]" data-mercury="{$address['zip_code']['type']}">{$address['zip_code']['value']}</p>
+<span class="smallprint" id="address[city]" data-mercury="{$address['city']['type']}">{$address['city']['value']}</span>
+<span class="smallprint" id="address[state]" data-mercury="{$address['state']['type']}">{$address['state']['value']}</span>
+<span class="smallprint" id="address[zip_code]" data-mercury="{$address['zip_code']['type']}">{$address['zip_code']['value']}</span>
 
 <div id="bio" data-mercury="{$bio['type']}">
 {$bio['value']}
