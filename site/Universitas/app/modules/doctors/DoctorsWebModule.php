@@ -81,6 +81,8 @@ class DoctorsWebModule extends WebModule
                       $this->assign('first_name', $item['first_name']);
                       $this->assign('last_name', $item['last_name']);
                       $this->assign('bio', $item['bio']);
+                      $this->assign('head_shot', $item['head_shot']);
+                   
                       
                       $saveUrl = $this->getModuleVar('BASE_URL', $defaultFeed, 'feeds');
                       $saveUrl = $saveUrl .'/'.$this->getArg('id').'.json';
