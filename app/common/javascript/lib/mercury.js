@@ -274,7 +274,7 @@ window.Mercury = {
       allowedMimeTypes: ['image/jpeg', 'image/gif', 'image/png'],
       maxFileSize: 1235242880,
       inputName: 'image[image]',
-      url: '/mercury/images',
+      url: 'http://localhost:3000/mercury/images',
       handler: false
       },
 
