@@ -53,14 +53,15 @@ class DoctorsWebModule extends WebModule
     
             $this->setLogData($defaultFeed, $controller->getTitle());
 
-            $items = $controller->items();
+            $items = $controller->items()['resources'];
       
             $results = array();
             foreach ($items as $item) {
+              // KurogoDebug::debug($item);
               $result = array(
                      'title'=> $item['first_name']['value'],
                      'subtitle'=> $item['email']['value'],
-                     'url'=> $this->buildBreadcrumbURL('detail', array('id'=>$item['_id']))
+                     'url'=> $this->buildBreadcrumbURL('detail', array('id'=>$item['id']))
                  );
                  $results[] = $result;
              }
@@ -78,8 +79,8 @@ class DoctorsWebModule extends WebModule
             
             $id = $this->getArg('id');
                   
-                  if ($item = $controller->getItem($id)) {
-                    
+                  if ($item = $controller->getItem($id)['entry']) {
+                    // KurogoDebug::debug($item);
                       $this->assign('first_name', $item['first_name']);
                       $this->assign('last_name', $item['last_name']);
                       $this->assign('bio', $item['bio']);
