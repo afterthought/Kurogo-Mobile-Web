@@ -8,6 +8,7 @@
  * is missing, please contact sales@modolabs.com.
  *
  */
+includePackage('Bedrock');
 
 class DoctorsWebModule extends WebModule
 {

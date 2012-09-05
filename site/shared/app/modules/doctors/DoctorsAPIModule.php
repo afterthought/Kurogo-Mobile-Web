@@ -1,6 +1,7 @@
 <?php
 
 
+Kurogo::includePackage('Bedrock');
 
 class DoctorsAPIModule extends APIModule
 {
