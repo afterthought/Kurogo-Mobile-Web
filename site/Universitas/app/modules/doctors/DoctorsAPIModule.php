@@ -44,7 +44,7 @@ class DoctorsAPIModule extends APIModule
                   $args = $this->args;
                   unset($args['term']);
                   unset($args['field']);
-                  $args[$field.'!match'] = '/'.$term.'/i';
+                  $args[$field.'!match'] = '/^'.$term.'/i';
 
                   $query = BedrockQuery::build($args);
                   $items = $controller->executeQuery($query);

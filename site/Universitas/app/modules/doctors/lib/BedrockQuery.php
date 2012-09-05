@@ -17,7 +17,7 @@ class BedrockQuery
             return;
           }
 
-        $this->filters[$field_name.'!match'] = '/'.$search_val.'/i';
+        $this->filters[$field_name.'!match'] = '/^'.$search_val.'/i';
         
     }
     

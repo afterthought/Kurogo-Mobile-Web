@@ -99,7 +99,7 @@
   				target: $('#firstname_suggestions'),
   				source: function(text,callback) { 
   				  $.ajax({
-              url: '/rest/doctors/autocomplete?field=first_name&term='+text+'&last_name!match=/' + $("#last_name").val() + '/i&distinct_fields[first_name]=first_name',
+              url: '/rest/doctors/autocomplete?field=first_name&term='+text+'&last_name!match=/^' + $("#last_name").val() + '/i&distinct_fields[first_name]=first_name',
             }).done(function ( data ) {
               if( console && console.log ) {
                 console.log("Sample of data:", data.response.distinct_values);
@@ -123,7 +123,7 @@
   				target: $('#lastname_suggestions'),
   	      source: function(text,callback) { 
   				  $.ajax({
-              url: '/rest/doctors/autocomplete?field=last_name&term='+text+'&first_name!match=/' + $("#first_name").val() + '/i&distinct_fields[last_name]=last_name',
+              url: '/rest/doctors/autocomplete?field=last_name&term='+text+'&first_name!match=/^' + $("#first_name").val() + '/i&distinct_fields[last_name]=last_name',
             }).done(function ( data ) {
               if( console && console.log ) {
                 console.log("Sample of data:", data.response.distinct_values);
