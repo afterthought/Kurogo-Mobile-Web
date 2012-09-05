@@ -1,16 +1,18 @@
 
 $(document).ready(function() {
   // $(".location").ellipsis();
+  
+  
+ 	$( "#btnMore" ).live( "click", 
+ 	  function() {
+ 	    getAndDisplayNextPage();
+ 	  });
+  
 });
 $('#container').live('pageinit', function (event) {
     
     
-    //Refresh news when btnRefresh is clicked
-   	$( "#btnMore" ).live( "click", 
-   	  function() {
-   	    getAndDisplayNextPage();
-   	  });
-   	  
+
 });
 
 
