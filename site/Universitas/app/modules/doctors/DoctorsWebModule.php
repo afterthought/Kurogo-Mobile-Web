@@ -61,8 +61,8 @@ class DoctorsWebModule extends WebModule
           case 'search':
           case 'search_listings':
    
-            $maxPerPage = $this->getOptionalModuleVar('MAX_RESULTS', 5);
-            $page = $this->getArg('page', 0);
+            $maxPerPage = $this->getOptionalModuleVar('MAX_RESULTS', 25);
+            $page = $this->getArg('page', 1);
 
             $controller->setStart($page);
             $controller->setLimit($maxPerPage);
@@ -92,7 +92,7 @@ class DoctorsWebModule extends WebModule
             $moreURL = null;
        
             $args = $this->args;
-            if (($totalItems - $offset)  > $maxPerPage) {
+            if (($totalItems - $offset)  > 0) {
                 $args['page'] = $page + 1;
                 $moreURL = $this->buildBreadcrumbURL('search_listings', $args, false);
             }
