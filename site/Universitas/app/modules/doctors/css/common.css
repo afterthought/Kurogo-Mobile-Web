@@ -219,7 +219,7 @@ hr {
   padding:0px;
  
 }
-.profile_photo, .ui-li-thumb {
+img.profile_photo, .ui-li-thumb {
   float:left;
   margin:5px;
   width:120px;
@@ -241,6 +241,6 @@ hr {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, li.ui-li-static.ui-li-has-thumb {
   padding-left:135px;
 }
