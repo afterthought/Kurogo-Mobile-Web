@@ -1,0 +1,246 @@
+.ui-bar-a {
+    background-image: url(images/top-hdr-bg.png);
+    background-repeat: repeat-x;
+    height: 43px;
+    border:none;
+}
+
+.ui-header .ui-btn-left, .ui-header .ui-btn-right {
+  top:0;
+}
+.ui-header .ui-title {
+  margin:0px;
+}
+
+/*
+#container_fixed {
+     height:auto !important;
+     min-height:0px;
+}*/
+
+#search .ui-btn-up-m {
+  background-image:url('images/btn-search.png');
+  background-repeat:no-repeat;
+  width:153px;
+  height:30px;
+}
+
+#search .ui-btn-down-m {
+  background-image:url('images/btn-search.png');
+  background-repeat:no-repeat;
+  width:153px;
+  height:30px;
+}
+
+#search .ui-btn-hover-m {
+  background-image:url('images/btn-search.png');
+  background-repeat:no-repeat;
+  width:153px;
+  height:30px;
+}
+
+#submit .ui-btn-up-m {
+  background-image:url('images/btn-submit.png');
+  background-repeat:no-repeat;
+  width:153px;
+  height:30px;
+}
+
+#submit .ui-btn-down-m {
+  background-image:url('images/btn-submit.png');
+  background-repeat:no-repeat;
+  width:153px;
+  height:30px;
+}
+
+#submit .ui-btn-hover-m {
+  background-image:url('images/btn-submit.png');
+  background-repeat:no-repeat;
+  width:153px;
+  height:30px;
+}
+
+.ui-br {
+  border-bottom-style: none;
+}
+.text-field  {
+padding-right: 7px;
+height:34px;
+background: url(images/text-right.png) 100% 0 no-repeat;
+display: inline-block;
+position: relative;
+vertical-align: middle;
+line-height:18px;
+width:100%;
+
+}
+
+.text-field input {
+border: none;
+padding:0px;
+height:34px;
+/*padding: 10px 0;*/
+font-size: 12px;
+/*padding:.4em;*/
+background: none;
+
+}
+.picker-field .ui-select {
+display: block;
+height: 34px;
+/*padding-left: 7px;*/
+background: url(images/text-left.png) 0 0;
+/*width:100%;*/
+/*padding-right:7px;*/
+
+}
+
+
+.picker-field {
+padding-right: 7px;
+height: 34px;
+background: url(images/text-right.png) 100% 0 no-repeat;
+display: inline-block;
+position: relative;
+vertical-align: middle;
+line-height:18px;
+width:100%;
+}
+
+
+
+
+@media (min-width: 450px) {
+  div.text-field, div.picker-field, .ui-field-contain input.ui-input-text, .ui-field-contain textarea.ui-input-text, .ui-field-contain .ui-input-search {
+  width: 60%;
+  display: inline-block;
+  }
+  .picker-field .ui-select {
+    width:100%;
+  }
+}
+
+
+
+.text-field .text-left{
+display: block;
+height: 34px;
+background: url(images/text-left.png) 0 0;
+padding-left:7px;
+}
+
+
+.ui-field-contain, fieldset.ui-field-contain {
+  padding:.5em 0;
+}
+label.ui-select {
+  line-height:1;
+  margin:0px;
+  font-weight:bold;
+}
+
+label.ui-input-text {
+  line-height:1;
+  margin:0px;
+  font-weight:bold;
+}
+
+
+
+.text-field select {
+
+}
+
+.ui-body-c, .ui-bar-a  {
+  text-shadow:none;
+}
+
+
+.ui-select .ui-btn select{
+/*  font-size: 50px;*/
+}
+
+.text-field select {
+vertical-align:baseline;
+}
+.ui-focus, .ui-shadow-inset{
+  -moz-box-shadow:    none;
+  -webkit-box-shadow: none;
+  box-shadow:         none;
+}
+
+.ui-content .ui-listview-inset {
+  margin:0px;
+}
+
+.profile_entry {
+/*  white-space:normal !important;*/
+}
+
+h2 {
+  padding-bottom:5px;
+}
+.profile_header {
+  font-weight:normal;
+  padding-bottom:5px;
+}
+
+
+#footer {
+  background-color: #719CB1;
+  margin-top:0px;
+  padding-top:20px;
+}
+
+.profile_header a {
+  font-size:16px;
+  color:#00E !important;
+  text-decoration:none;
+}
+
+
+.profile {
+  padding-top:5px;
+  padding-right:5px;
+  min-height:160px;
+}
+
+.bigger_phone a {
+  font-size:16px;
+  font-weight:bold;
+}
+
+hr {
+  background-color:#719CB1;
+  height:2px;
+}
+
+.physician_list .ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li, .ui-li-divider, .ui-li-static  {
+  padding:0px;
+ 
+}
+.profile_photo, .ui-li-thumb {
+  float:left;
+  margin:5px;
+  width:120px;
+  height:160px;
+  max-width:120px;
+  max-height:160px;
+}
+
+.ui-li-heading {
+/* margin-top:-5px;*/
+/*margin:0px;*/
+}
+
+.ui-body-c .ui-link {
+  font-weight:normal;
+}
+
+.ui-body-c {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.ui-li-has-thumb .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li-has-thumb {
+  padding-left:135px;
+}

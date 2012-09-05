@@ -11,7 +11,7 @@
 
 class DoctorsWebModule extends WebModule
 {
-    protected static $defaultModel = 'DoctorsDataModel';
+    protected static $defaultModel = 'BedrockDataModel';
     protected $id='doctors'; 
     protected $feeds = array();
 
@@ -30,7 +30,7 @@ class DoctorsWebModule extends WebModule
             $modelClass = isset($feedData['MODEL_CLASS']) ? $feedData['MODEL_CLASS'] : self::$defaultModel;
         }
         
-        $controller = DoctorsDataModel::factory($modelClass, $feedData);
+        $controller = BedrockDataModel::factory($modelClass, $feedData);
         
 
         return $controller;
@@ -40,32 +40,67 @@ class DoctorsWebModule extends WebModule
       $defaultFeed = key($this->feeds);
       $controller = $this->getFeed($defaultFeed);
       
+      $this->addExternalCSS('http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css');
+      // $this->addInternalJavascript('/common/javascript/lib/jquery-1.8.1.js');
+      // $this->addInternalJavascript('/common/javascript/lib/jquery.mobile-1.1.1.js');
       
+      $this->addExternalJavascript('http://code.jquery.com/jquery-1.7.1.min.js');
+      $this->addExternalJavascript('http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js');
       switch ($this->page)
       {
-         case 'index':
+          case 'index':
+             
+             $this->addInternalJavascript('/common/javascript/lib/jqm.autoComplete-1.4.1.js');
+          
+            $cities = $controller->distinct_field_values(["city" => "address.city"]);
+            $cities = array_merge(array(''=>'-All-'), array_combine($cities['distinct_values'], $cities['distinct_values']));
+            // KurogoDebug::debug($cities);
+            $this->assign('cities', $cities);
+            $this->assign('genders', array(''=>'-All-', 'Male'=>'Male', 'Female'=>'Female'));
+          break;
+          case 'search':
+          case 'search_listings':
    
-            $maxPerPage = $this->getOptionalModuleVar('MAX_RESULTS', 1);
-            $start = $this->getArg('start', 0);
+            $maxPerPage = $this->getOptionalModuleVar('MAX_RESULTS', 5);
+            $page = $this->getArg('page', 0);
 
-            $controller->setStart($start);
-            $controller->setLimit(1);
-    
+            $controller->setStart($page);
+            $controller->setLimit($maxPerPage);
+            $controller->setOption('sort', 'last_name');
             $this->setLogData($defaultFeed, $controller->getTitle());
 
-            $items = $controller->items()['resources'];
-      
+            $query = BedrockQuery::build();
+            $query->add_like_filter('address.city', $this->getArg('city'));
+            $query->add_like_filter('first_name', $this->getArg('first_name'));
+            $query->add_like_filter('last_name', $this->getArg('last_name'));
+            
+            $query->add_exact_filter('gender', $this->getArg('gender'));
+            $query->add_exact_filter('accepting_new_patients', $this->getArg('accepting_new_patients'));
+    
+                
+        
+            $items = $controller->executeQuery($query)['resources'];
+            $totalItems = $controller->getTotalItems();
+ 
             $results = array();
             foreach ($items as $item) {
-              // KurogoDebug::debug($item);
-              $result = array(
-                     'title'=> $item['first_name']['value'],
-                     'subtitle'=> $item['email']['value'],
-                     'url'=> $this->buildBreadcrumbURL('detail', array('id'=>$item['id']))
-                 );
-                 $results[] = $result;
+                $item['url'] = $this->buildBreadcrumbURL('detail', array('id'=>$item['id']));  
+                $results[] = $item;  
              }
+           
+            $offset = $page * $maxPerPage;
+            $moreURL = null;
+       
+            $args = $this->args;
+            if (($totalItems - $offset)  > $maxPerPage) {
+                $args['page'] = $page + 1;
+                $moreURL = $this->buildBreadcrumbURL('search_listings', $args, false);
+            }
+            
             $this->assign('results', $results);
+            $this->assign('maxPerPage', $maxPerPage);
+            $this->assign('moreURL', $moreURL);
+           
           break;
          
          
