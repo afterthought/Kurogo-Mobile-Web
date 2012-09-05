@@ -28,6 +28,7 @@ abstract class DataRetriever {
     protected $DEFAULT_CACHE_LIFETIME = 0; // 15 min
     protected $initArgs=array();
     protected $authority;
+    protected $dataModel;
     protected $debugMode = false;
     protected $options = array();
     protected $context = array(); // sent to the response
@@ -42,6 +43,10 @@ abstract class DataRetriever {
     protected $parser;
 
     abstract protected function retrieveResponse();
+    
+    public function setDataModel(DataModel $dataModel) {
+    	$this->dataModel = $dataModel;
+    }
     
     public function setCacheLifeTime($cacheLifetime) {
         $this->cacheLifetime = $cacheLifetime;
@@ -243,7 +248,9 @@ abstract class DataRetriever {
             }            
         }
 
-        if (!isset($args['CACHE_LIFETIME'])) {
+        if (isset($args['CACHE_LIFETIME'])) {
+            $this->cacheLifetime = $args['CACHE_LIFETIME'];
+        } else {
             $args['CACHE_LIFETIME'] = $this->DEFAULT_CACHE_LIFETIME;
         }
 
