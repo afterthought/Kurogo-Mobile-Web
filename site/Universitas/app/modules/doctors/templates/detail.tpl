@@ -1,17 +1,52 @@
 {include file="findInclude:common/templates/header.tpl"}
-<div class="focal">
-<p id="first_name" data-mercury="simple">{$first_name}</p>
-</div>
-<img src="{$head_shot['src']}" id="head_shot" data-mercury="image"/>
-<p class="smallprint" id="last_name" data-mercury="simple">{$last_name}</p>
 
-<span class="smallprint" id="address[city]" data-mercury="simple">{$address['city']}</span>
-<span class="smallprint" id="address[state]" data-mercury="simple">{$address['state']}</span>
-<span class="smallprint" id="address[zip_code]" data-mercury="simple">{$address['zip_code']}</span>
+<h2>Address</h2>
+{$location}
+<p class="address_links">  
+  <a data-role="none" href="http://maps.google.com/maps?q={$address['street1']} {$address['street2']} {$address['city']} {$address['state']} {$address['zip_code']}">{$address['street1']}, {$address['street2']}
+  <br/> 
+  {$address['city']}, {$address['state']} {$address['zip_code']}</a>
+</p> 
+<p>&nbsp;</p>
 
-<div id="bio" data-mercury="simple">
-{$bio}
-</div>
+{if ($ph->Specialty)}
+<h2>Specialty</h2>
+{$ph->Specialty}
+<p>&nbsp;</p>
+{/if}
+
+{if ($ph->Board1)}
+<h2>Board Certification</h2>
+{$ph->Board1}
+<p>&nbsp;</p>
+{/if}
+
+{if ($ph->AppointmentDate)}
+<h2>Appointment Date</h2>
+{$ph->AppointmentDate}
+<p>&nbsp;</p>
+{/if}
+
+{if ($ph->MedicalSchool1)}
+<h2>Medical School</h2>
+{$ph->MedicalSchool1}
+<p>&nbsp;</p>
+{/if}
+
+{if ($ph->Residency1)}
+<h2>Residency</h2>
+{$ph->Residency1}
+<p>&nbsp;</p>
+{/if}
+
+{if ({$gender})}
+<h2>Gender</h2>
+{$gender}
+{/if}
+
+
+
+<p>&nbsp;</p>
 
 <a id="edit_page" data-save-url="{$saveUrl}" href="#" onclick="javascript:toggleMercury($(this));return false;">Edit Page</a>
 

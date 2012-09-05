@@ -61,7 +61,7 @@ class DoctorsWebModule extends WebModule
           case 'search':
           case 'search_listings':
    
-            $maxPerPage = $this->getOptionalModuleVar('MAX_RESULTS', 25);
+            $maxPerPage = $this->getOptionalModuleVar('MAX_RESULTS', 10);
             $page = $this->getArg('page', 1);
 
             $controller->setStart($page);
@@ -118,8 +118,10 @@ class DoctorsWebModule extends WebModule
                     // KurogoDebug::debug($item);
                       $this->assign('first_name', $item['first_name']);
                       $this->assign('last_name', $item['last_name']);
+                      $this->assign('gender', $item['gender']);
                       $this->assign('bio', $item['bio']);
                     
+                      $this->assign('location', $item['location']);
                       $this->assign('address', $item['address']);
                       $this->assign('head_shot', $item['head_shot']);
                       $saveUrl = $this->getModuleVar('BASE_URL', $defaultFeed, 'feeds');
