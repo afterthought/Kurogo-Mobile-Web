@@ -10,7 +10,7 @@
 
 {$searchAction = $searchPage|default:"/$configModule/search"}
 
-<form action="{$searchAction}" method="GET" data-ajax="false">
+<form action="{$searchAction}" method="GET">
 <fieldset data-role="fieldcontain">
   	<label for="specialty">Specialty:</label>
   	<div class="picker-field">
