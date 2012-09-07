@@ -15,7 +15,7 @@
   	<label for="specialty">Specialty:</label>
   	<div class="picker-field">
 	    <select name="specialty" id="specialty" data-theme="s" data-corners="false" data-shadow="false" data-mini="true" data-prevent-focus-zoom="true">
-			{html_options options=$specialities}
+			{html_options options=$specialties}
 		  </select>
     </div>
 </fieldset>

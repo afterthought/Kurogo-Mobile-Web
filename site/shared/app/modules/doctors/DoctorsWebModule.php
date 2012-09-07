@@ -36,11 +36,29 @@ class DoctorsWebModule extends WebModule
 
         return $controller;
     }
+    private function getSpecialties() {
+        $controller = $this->getFeed('Specialties');
+        $specialties = array(''=>'-All-');     
+        $controller->setOption('sort', 'name');     
+        foreach ($controller->items()['resources'] as $specialty) {
+          $specialties[$specialty['@url']] = $specialty['name'];
+        }
+        return $specialties;
+    }
+    
+    private function getLocations() {
+        $controller = $this->getFeed('Locations');
+        $locations = array();     
+        $controller->setOption('sort', 'name');     
+        foreach ($controller->items()['resources'] as $location) {
+          $locations[$location['@url']] = $location['name'];
+        }
+        return $locations;
+    }
+    
     protected function initializeForPage() {
-      
-      $defaultFeed = key($this->feeds);
-      $controller = $this->getFeed($defaultFeed);
-      
+    
+      $controller = $this->getFeed('Doctors');
       $this->addExternalCSS('http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css');
       // $this->addInternalJavascript('/common/javascript/lib/jquery-1.8.1.js');
       // $this->addInternalJavascript('/common/javascript/lib/jquery.mobile-1.1.1.js');
@@ -60,6 +78,10 @@ class DoctorsWebModule extends WebModule
             // KurogoDebug::debug($cities);
             $this->assign('cities', $cities);
             $this->assign('genders', array(''=>'-All-', 'Male'=>'Male', 'Female'=>'Female'));
+            
+            
+
+            $this->assign('specialties', $this->getSpecialties());
           break;
           case 'search':
           case 'search_listings':
@@ -70,13 +92,13 @@ class DoctorsWebModule extends WebModule
             $controller->setStart($page);
             $controller->setLimit($maxPerPage);
             $controller->setOption('sort', 'last_name');
-            $this->setLogData($defaultFeed, $controller->getTitle());
-
+     
             $query = BedrockQuery::build();
             $query->add_like_filter('address.city', $this->getArg('city'));
             $query->add_like_filter('first_name', $this->getArg('first_name'));
             $query->add_like_filter('last_name', $this->getArg('last_name'));
             
+            $query->add_exact_filter('specialties.url', $this->getArg('specialty'));
             $query->add_exact_filter('gender', $this->getArg('gender'));
             $query->add_exact_filter('accepting_new_patients', $this->getArg('accepting_new_patients'));
     
@@ -100,6 +122,8 @@ class DoctorsWebModule extends WebModule
                 $moreURL = $this->buildBreadcrumbURL('search_listings', $args, false);
             }
             
+            $this->assign('specialties', $this->getSpecialties());
+            $this->assign('locations', $this->getLocations());
             $this->assign('results', $results);
             $this->assign('maxPerPage', $maxPerPage);
             $this->assign('moreURL', $moreURL);
@@ -117,25 +141,20 @@ class DoctorsWebModule extends WebModule
             
             $id = $this->getArg('id');
                   
-                  if ($item = $controller->getItem($id)['entry']) {
-                    // KurogoDebug::debug($item);
-                      $this->assign('first_name', $item['first_name']);
-                      $this->assign('last_name', $item['last_name']);
-                      $this->assign('gender', $item['gender']);
-                      $this->assign('bio', $item['bio']);
-                    
-                      $this->assign('location', $item['location']);
-                      $this->assign('address', $item['address']);
-                      $this->assign('head_shot', $item['head_shot']);
-                      $saveUrl = $this->getModuleVar('BASE_URL', $defaultFeed, 'feeds');
-                      $saveUrl = $saveUrl .'/'.$this->getArg('id').'.json';
-                      $this->assign('saveUrl', $saveUrl);
-                  } else {
-                      $this->redirectTo('index');
-                  }
-                  break;
-        
+            if ($item = $controller->getItem($id)['entry']) {
+              // KurogoDebug::debug($item);
+                $this->assign('item', $item);
+                $this->assign('specialties', $this->getSpecialties());
+                $this->assign('locations', $this->getLocations());
+                $saveUrl = $this->getModuleVar('BASE_URL', 'Doctors', 'feeds');
+                $saveUrl = $saveUrl .'/'.$this->getArg('id').'.json';
+                $this->assign('saveUrl', $saveUrl);
                 $this->setPageTitle($item['first_name'].' '.$item['last_name']);
+            } else {
+                $this->redirectTo('index');
+            }
+            break;
+  
         }
     }
  }

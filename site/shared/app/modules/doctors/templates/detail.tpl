@@ -1,18 +1,21 @@
 {include file="findInclude:common/templates/header.tpl"}
 
 <h2>Address</h2>
-{$location}
+{$locations[$item['location']['url']]}
 <p class="address_links">  
-  <a data-role="none" href="http://maps.google.com/maps?q={$address['street1']} {$address['street2']} {$address['city']} {$address['state']} {$address['zip_code']}">{$address['street1']}, {$address['street2']}
+  <a data-role="none" href="http://maps.google.com/maps?q={$item['address']['street1']} {$item['address']['street2']} {$item['address']['city']} {$item['address']['state']} {$item['address']['zip_code']}">{$item['address']['street1']}, {$item['address']['street2']}
   <br/> 
-  {$address['city']}, {$address['state']} {$address['zip_code']}</a>
+  {$item['address']['city']}, {$item['address']['state']} {$item['address']['zip_code']}</a>
 </p> 
 <p>&nbsp;</p>
 
-{if ($ph->Specialty)}
-<h2>Specialty</h2>
-{$ph->Specialty}
-<p>&nbsp;</p>
+{if (isset($item['specialties']) && count($item['specialties']) > 0)}
+<h2>Specialties</h2>
+  {foreach $item['specialties'] as $specialty}
+    {$specialties[$specialty['url']]}
+    <p>&nbsp;</p>
+  {/foreach}
+
 {/if}
 
 {if ($ph->Board1)}
