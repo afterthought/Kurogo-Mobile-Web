@@ -27,9 +27,13 @@ class BedrockQuery
         }
 
         $this->filters[$field_name] = $search_val;
-        
     }
     
+    public function add_distinct_filter($field_name, $projected_name) {
+      
+      $this->filters['distinct_fields['.$projected_name.']'] = $field_name;
+    }
+
  
     
     public static function build($filters=[])

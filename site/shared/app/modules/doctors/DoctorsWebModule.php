@@ -51,9 +51,11 @@ class DoctorsWebModule extends WebModule
       {
           case 'index':
              
-             $this->addInternalJavascript('/common/javascript/lib/jqm.autoComplete-1.4.1.js');
+            $this->addInternalJavascript('/common/javascript/lib/jqm.autoComplete-1.4.1.js');
           
-            $cities = $controller->distinct_field_values(["city" => "address.city"]);
+            $query = BedrockQuery::build();
+            $query->add_distinct_filter('address.city', 'city');
+            $cities = $controller->executeQuery($query);
             $cities = array_merge(array(''=>'-All-'), array_combine($cities['distinct_values'], $cities['distinct_values']));
             // KurogoDebug::debug($cities);
             $this->assign('cities', $cities);
