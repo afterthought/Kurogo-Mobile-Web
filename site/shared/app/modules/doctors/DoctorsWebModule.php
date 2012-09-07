@@ -59,12 +59,9 @@ class DoctorsWebModule extends WebModule
     protected function initializeForPage() {
     
       $controller = $this->getFeed('Doctors');
-      $this->addExternalCSS('http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css');
-      // $this->addInternalJavascript('/common/javascript/lib/jquery-1.8.1.js');
-      // $this->addInternalJavascript('/common/javascript/lib/jquery.mobile-1.1.1.js');
-      
-      $this->addExternalJavascript('http://code.jquery.com/jquery-1.7.1.min.js');
-      $this->addExternalJavascript('http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js');
+      $this->addExternalCSS('http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css');
+      $this->addExternalJavascript('http://code.jquery.com/jquery-1.8.1.min.js');
+      $this->addExternalJavascript('http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js');
       switch ($this->page)
       {
           case 'index':

@@ -1,0 +1,12 @@
+#heart_buttons {
+  width:310px;
+  margin:auto;
+}
+#heart_buttons a {
+  width:100px;
+
+}
+#heart_buttons a img {
+	width:48px;
+	height:48px;
+}
