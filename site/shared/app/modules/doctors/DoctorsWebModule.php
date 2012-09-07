@@ -135,6 +135,7 @@ class DoctorsWebModule extends WebModule
                   }
                   break;
         
+                $this->setPageTitle($item['first_name'].' '.$item['last_name']);
         }
     }
  }
