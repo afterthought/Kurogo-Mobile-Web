@@ -321,13 +321,7 @@ class PeopleWebModule extends WebModule {
         $this->feed = $this->getArg('feed', $this->getDefaultFeed());
         $this->loadDetailAttributes($this->feed);
         $PeopleController = $this->getFeed($this->feed);
-        
-        $this->addInternalCSS('/common/css/mercury.bundle.css');
-        $this->addInternalJavascript('/common/javascript/lib/jquery-1.7.js');
-        $this->addInternalJavascript('/common/javascript/lib/mercury.js');
-        $this->addInternalJavascript('/common/javascript/lib/mercury_dialogs.js');
-        $this->addInternalJavascript('/common/javascript/lib/mercury_loader.js');
-    
+            
         $this->assign('selectedFeed', $this->feed);
         if (Kurogo::getSiteVar('MODULE_DEBUG')) {
             $this->addModuleDebugString($PeopleController->debugInfo());
@@ -363,12 +357,7 @@ class PeopleWebModule extends WebModule {
                         }
                         $this->assign('headerSections', $headerSections);
                         $this->assign('personDetails', $personDetails);
-        
-                        $saveUrl = $this->getModuleVar('BASE_URL', $this->feed, 'feeds');
-                        $saveUrl = $saveUrl .'/'.$this->getArg(array('id', 'uid'));
-                        $this->assign('saveUrl', $saveUrl);
-                        // $this->addInlineJavascriptFooter("var CONFIG_MODULE = '{$this->configModule}';");
-                        
+                            
                         break;
                     } else {
                         $this->assign('searchError', $PeopleController->getResponseError());
