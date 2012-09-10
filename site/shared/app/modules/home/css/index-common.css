@@ -1,4 +1,5 @@
 #heart_buttons {
+  padding:.5em .5em;
   width:310px;
   margin:auto;
 }
@@ -9,4 +10,18 @@
 #heart_buttons a img {
 	width:48px;
 	height:48px;
+}
+
+#fastnavs a img {
+	width:24px;
+	height:24px;
+}
+
+#fastnavs {
+  padding:.5em .5em;
+  
+}
+
+#fastnavs li {
+  padding:.25em 0em;
 }

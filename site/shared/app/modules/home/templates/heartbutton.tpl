@@ -1,7 +1,7 @@
 
 {block name="itemLink"}
   {if $item['url']}
-    <a href="{$item['url']}" class="{$item['class']|default:''}"{if $linkTarget || $item['linkTarget']} target="{if $item['linkTarget']}{$item['linkTarget']}{else}{$linkTarget}{/if}"{/if} data-role="button" data-theme="c" data-shadow="true">
+    <a href="{$item['url']}" class="{$item['class']|default:''}"{if $linkTarget || $item['linkTarget']} target="{if $item['linkTarget']}{$item['linkTarget']}{else}{$linkTarget}{/if}"{/if} data-role="button" data-theme="a" data-shadow="true">
   {else}
     <span class="nolink">
   {/if}
